@@ -60,6 +60,10 @@ public class AccountUtils {
 
     public final static String ROOM_RESERVATION_BOOKED_SUCCESS_MESSAGE = "Room has been reserved successfully";
 
+    public static final String ACCOUNT_EXISTS_CODE = "015";
+
+    public static final String ACCOUNT_EXISTS_MESSAGE = "This user already has an account created";
+
     public final static String SUCCESS_CODE = "200";
 
     public final static String SUCCESS_MESSAGE = "Success✅";
