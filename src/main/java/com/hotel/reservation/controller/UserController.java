@@ -2,8 +2,10 @@ package com.hotel.reservation.controller;
 
 
 import com.hotel.reservation.entity.enums.Gender;
+import com.hotel.reservation.payload.request.LoginRequest;
 import com.hotel.reservation.payload.request.RegistrationRequest;
 import com.hotel.reservation.payload.response.AuthResponse;
+import com.hotel.reservation.payload.response.LoginResponse;
 import com.hotel.reservation.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,12 @@ public class UserController {
     }
 
     @GetMapping("/verify")
-    public ResponseEntity<String> verifyUser(@RequestParam token) {
+    public ResponseEntity<String> verifyUser(@RequestParam String token) {
         return ResponseEntity.ok(userService.verifyUser(token));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
+        return ResponseEntity.ok(userService.login(request));
     }
 }
