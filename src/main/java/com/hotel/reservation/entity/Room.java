@@ -5,10 +5,7 @@ import com.hotel.reservation.entity.enums.RoomStatus;
 import com.hotel.reservation.entity.enums.RoomType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Positive;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -18,6 +15,8 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Builder
 @Data
+@Getter
+@Setter
 public class Room extends BaseClass{
 
     @Column(nullable = false, unique = true)

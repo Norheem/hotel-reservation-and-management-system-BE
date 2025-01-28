@@ -1,5 +1,6 @@
 package com.hotel.reservation.payload.response;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,14 +10,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RegistrationResponse {
-    private String firstName;
+public class AuthResponse {
 
-    private String lastName;
+    private String responseCode;
 
-    private String email;
+    private String responseMessage;
 
-    private String phoneNumber;
+    private RegistrationInfo registrationInfo;
 
     private String token;
 }

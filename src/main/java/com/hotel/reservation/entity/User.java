@@ -2,11 +2,8 @@ package com.hotel.reservation.entity;
 
 
 import com.hotel.reservation.entity.enums.Gender;
-import com.hotel.reservation.entity.enums.Roles;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import com.hotel.reservation.entity.enums.Role;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,17 +11,18 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "customer_tbl")
+@Table(name = "user_tbl")
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer extends BaseClass implements UserDetails, Serializable {
+public class User extends BaseClass implements UserDetails, Serializable {
 
     @NotBlank(message = "First Name is required")
     @Size(min = 3, max = 50, message = "First name must be between 3 and 50 Characters")
@@ -51,7 +49,7 @@ public class Customer extends BaseClass implements UserDetails, Serializable {
     private Gender gender;
 
     @Enumerated(EnumType.STRING)
-    private Roles role;
+    private Role role;
 
     @NotBlank(message = "Password is required")
     @Size(min = 8, message = "Password must be at least 8 characters long")
@@ -60,6 +58,15 @@ public class Customer extends BaseClass implements UserDetails, Serializable {
             message = "Password must contain at least one digit, one lowercase letter, one uppercase letter, one special character, and no spaces"
     )
     private String password;
+
+    @Column(nullable = false)
+    private boolean isActive = false;
+
+    @Column
+    private String resetToken;
+
+    @Column
+    private LocalDateTime resetTokenExpiry;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

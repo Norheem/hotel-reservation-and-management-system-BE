@@ -1,8 +1,8 @@
 package com.hotel.reservation.entity.enums;
 
-public enum Roles {
+public enum Role {
 
     CUSTOMER,
 
-    STAFF
+    ADMIN
 }
