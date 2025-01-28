@@ -7,7 +7,6 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SecurityException;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +18,11 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class JwtService {
 
-    @Value("${app.jwt-secret}")
-    private String SECRET_KEY;
 
-    @Value("${app.jwt-expiration}")
-    private String jwtExpirationDate;
+    private final String SECRET_KEY = "MIHcAgEBBEIBHOAQ2vcFrnvHoQMRcGrdeHR6dRr+vidGtW8wnGA8UcuZkzUDZ4KrGeOiJQNCF74XwfPrQMA+Ri4tnqusc2gYN+2gBwYFK4EEACOhgYkDgYYABADwc4U4Yx2CEmjqRRmgOvkJzgjiX9InzJf+DQZJwJof72ldl/OQmiZm0p7weJtDt1sxg3zi5Fi+yns77EJrSKrc5QBUh5bzP9HQfUXGdc9h3cGc6CNKia9kAltOLZCM+L0W+GBYtXzaCwLV0eFV0Vpsp7iD+RtnKhMFiPRZJI2iWCzUwQ==";
+
+
+    private final Long jwtExpirationDate = 86400000L;
 
     private final Set<String> blacklistedTokens = ConcurrentHashMap.newKeySet();
 
